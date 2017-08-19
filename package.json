@@ -1,0 +1,22 @@
+{
+  "name": "jogo da cegueira",
+  "version": "1.0.0",
+  "description": "Jogo interativo para simular a sensação de cegueira",
+  "main": "app.js",
+  "scripts": {
+    "test": "testScript"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericonetto/jogodacegueira.git"
+  },
+  "author": "Marilia Gruenwaldt",
+  "license": "ISC",
+  "homepage": "https://github.com/ericonetto/jogodacegueira#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "node-storage": "0.0.7",
+    "request": "^2.81.0"
+  }
+}
