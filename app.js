@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 
 
 var app = express();
-var listenPort =3000;
+var listenPort =80;
 
 
 app.use(express.static(path.join(`${__dirname}/web`)));
@@ -19,30 +19,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 
-
-var store = new Storage(path.join(`${__dirname}/web/data/storage.txt`));
-
-
-/* ------------------
- * --    Routes  getfromplatform  --
- * ------------------ */
-
-// App will serve up different pages for client & desktop
-app.get('/getfromplatform',
-  (req, res) => {
-    res.sendFile(path.join(`${__dirname}/web/getfromplatform.html`));
-      // res.render(`../client/index.html`);
-
-  }
-);
-app.post('/getfromplatform',
-  (req, res) => {
-    //res.render(`${__dirname}/web/tapmobile`, { error: null });
-    res.send('no-show-client-association');
-  }
-);
-
-
 /* ------------------
  * --    Routes  root  --
  * ------------------ */
@@ -50,24 +26,12 @@ app.post('/getfromplatform',
 // App will serve up different pages for client & desktop
 app.get('/',
   (req, res) => {
-    res.sendFile(path.join(`${__dirname}/web/setapplication.html`));
+    res.sendFile(path.join(`${__dirname}/web/game.html`));
   }
 );
 app.post('/',
   (req, res) => {
-    res.sendFile(path.join(`${__dirname}/web/setapplication.html`));
-  }
-);
-// App will serve up different pages for client & desktop
-app.get('/application',
-  (req, res) => {
-    res.send({application:store.get('application')});
-  }
-);
-app.post('/application',
-  (req, res) => {
-    store.put('application',  req.body.clientName);
-    res.send({"code": "200","message": "OK"});
+    res.sendFile(path.join(`${__dirname}/web/game.html`));
   }
 );
 
