@@ -26,12 +26,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 // App will serve up different pages for client & desktop
 app.get('/',
   (req, res) => {
-    res.sendFile(path.join(`${__dirname}/web/game.html`));
+    res.sendFile(path.join(`${__dirname}/web/game_v2.html`));
   }
 );
 app.post('/',
   (req, res) => {
-    res.sendFile(path.join(`${__dirname}/web/game.html`));
+    res.sendFile(path.join(`${__dirname}/web/game_v2.html`));
   }
 );
 
