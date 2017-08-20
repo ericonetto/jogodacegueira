@@ -1,7 +1,7 @@
 
 
 class blackTile {
-  constructor(thisCanvas, thisContext, thisWidth, thisHeight, thisLeft, thisTop, thisVisible=true) {
+  constructor(thisCanvas, thisContext, thisWidth, thisHeight, thisLeft, thisTop, thisHidde) {
     this.thisHeight = thisHeight;
     this.thisWidth = thisWidth;
     this.thisTop = thisTop;
@@ -37,23 +37,22 @@ class blackTile {
     this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
 
-  get visible(){return this.thisVisible}
-  set visible(thisVisible){
-    this.thisVisible=thisVisible;
-    if(thisVisible==false){
-      this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+  get hidden(){
+    if(this.thisHidden){
+      return true;
     }else{
-      this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+      return false;
     }
   }
 
+
   hide(){
-    this.thisVisible=false;
+    this.thisHidden=true;
     this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
 
   show(){
-    this.thisVisible=false;
+    this.thisHidden=false;
     this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
   mouseOverMe(x,y){

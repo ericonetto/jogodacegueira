@@ -24,18 +24,39 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
  * ------------------ */
 
 // App will serve up different pages for client & desktop
-app.get('/',
+app.get('/v1',
+  (req, res) => {
+    res.sendFile(path.join(`${__dirname}/web/game_v1.html`));
+  }
+);
+app.post('/v1',
+  (req, res) => {
+    res.sendFile(path.join(`${__dirname}/web/game_v1.html`));
+  }
+);
+
+
+app.get('/v2',
   (req, res) => {
     res.sendFile(path.join(`${__dirname}/web/game_v2.html`));
   }
 );
-app.post('/',
+app.post('/v2',
   (req, res) => {
     res.sendFile(path.join(`${__dirname}/web/game_v2.html`));
   }
 );
 
-
+app.get('/v3',
+  (req, res) => {
+    res.sendFile(path.join(`${__dirname}/web/game_v3.html`));
+  }
+);
+app.post('/v3',
+  (req, res) => {
+    res.sendFile(path.join(`${__dirname}/web/game_v3.html`));
+  }
+);
 
 
 
