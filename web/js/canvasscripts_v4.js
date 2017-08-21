@@ -1,6 +1,6 @@
 var colunas=24;
 var larguraCanvas=1200;
-var alturaCanvas=1200;
+var alturaCanvas=640;
 
 
 var larguraColuna=larguraCanvas/colunas;
@@ -12,6 +12,8 @@ var posicaoL=0;
 var coluna=0;
 var linha =0;
 var tiles=[];
+var nextC=0;
+var nextR=0;
 
 
 function loadLayer1(){
@@ -28,8 +30,69 @@ function loadLayer1(){
   };
 }
 
-function nextNum(minNum,maxNum){
-  return Math.floor(Math.random() * maxNum) + minNum;
+
+
+
+function randomStep(){
+  var stR=(Math.floor(Math.random() * 3)-1)+nextR;
+  var stC=(Math.floor(Math.random() * 3)-1)+nextC;
+
+  while(stR==nextR && stC==nextC){
+    stR=(Math.floor(Math.random() * 3)-1)+nextR;
+    stC=(Math.floor(Math.random() * 3)-1)+nextC;
+  }
+
+  var directionR=0;
+  var directionC=0;
+
+  if(stR<0){
+    directionR=1;
+  }
+  if(stR>linhas){
+    directionR=-1;
+  }
+
+  if(stC<0){
+    directionC=1;
+  }
+  if(stC>colunas){
+    directionC=-1;
+  }
+  stR=stR+directionR;
+  stC=stC+directionC;
+  if(stR>nextR){
+    directionR=1;
+  }
+  if(stR<nextR){
+    directionR=-1;
+  }
+  if(stC>nextC){
+    directionC=1;
+  }
+  if(stC<nextC){
+    directionC=-1;
+  }
+  while(tiles[stR][stC].hidden){
+    if(stR<0){
+      directionR=1;
+    }
+    if(stR>linhas){
+      directionR=-1;
+    }
+
+    if(stC<0){
+      directionC=1;
+    }
+    if(stC>colunas){
+      directionC=-1;
+    }
+    stR=stR+directionR;
+    stC=stC+directionC;
+  }
+
+  nextR=stR;
+  nextC=stC;
+
 }
 
 
@@ -57,6 +120,10 @@ $( document ).ready(function() {
   }
 
 
+  nextC=Math.floor(Math.random() * colunas);
+  nextR=Math.floor(Math.random() * linhas);
+
+
 
   canvasLayer2.onmousemove = function(e) {
 
@@ -69,18 +136,24 @@ $( document ).ready(function() {
 
         for(linha=0;linha<linhas;linha++){
           for(coluna=0;coluna<colunas;coluna++){
+            if(tiles[linha][coluna].mouseOverMe(x,y)){
 
-            if(tiles[coluna][linha].mouseOverMe(x,y) && tiles[coluna][linha].hidden==false){
-              audio.play();
-              tiles[coluna][linha].hide();
+
+              if(coluna==nextC && linha==nextR){
+                if(tiles[linha][coluna].hidden==false){
+                  audio.play();
+                  tiles[linha][coluna].hide();
+                }
+                randomStep();
+
+              }
+
             }
             posicaoC=posicaoC+larguraColuna;
           }
           posicaoC=0;
           posicaoL=posicaoL+larguraLinha;
         }
-
-
 
     }
 

@@ -11,28 +11,28 @@ class blackTile {
   }
   get width(){return this.width}
   set width(thisWidth){
-    this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+    this.thisContext.clearRect(this.thisLeft-1, this.thisTop-1, this.thisWidth+1, this.thisHeight+1);
     this.thisWidth=thisWidth;
     this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
 
   get height(){return this.thisHeight}
   set height(thisHeight){
-    this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+    this.thisContext.clearRect(this.thisLeft-1, this.thisTop-1, this.thisWidth+1, this.thisHeight+1);
     this.thisHeight=thisHeight;
     this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
 
   get left(){return this.thisLeft}
   set left(thisLeft){
-    this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+    this.thisContext.clearRect(this.thisLeft-1, this.thisTop-1, this.thisWidth+1, this.thisHeight+1);
     this.thisLeft=thisLeft;
     this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
 
   get top(){return this.thisTop}
   set top(thisTop){
-    this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+    this.thisContext.clearRect(this.thisLeft-1, this.thisTop-1, this.thisWidth+1, this.thisHeight+1);
     this.top=thisTop;
     this.thisContext.fillRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
   }
@@ -48,7 +48,7 @@ class blackTile {
 
   hide(){
     this.thisHidden=true;
-    this.thisContext.clearRect(this.thisLeft, this.thisTop, this.thisWidth, this.thisHeight);
+    this.thisContext.clearRect(this.thisLeft-1, this.thisTop-1, this.thisWidth+1, this.thisHeight+1);
   }
 
   show(){

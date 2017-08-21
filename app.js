@@ -59,6 +59,17 @@ app.post('/v3',
 );
 
 
+app.get('/v4',
+  (req, res) => {
+    res.sendFile(path.join(`${__dirname}/web/game_v4.html`));
+  }
+);
+app.post('/v4',
+  (req, res) => {
+    res.sendFile(path.join(`${__dirname}/web/game_v4.html`));
+  }
+);
+
 
 
 app.listen(listenPort, function () {

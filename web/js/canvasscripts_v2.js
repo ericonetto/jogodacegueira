@@ -58,7 +58,6 @@ $( document ).ready(function() {
         y = e.clientY - rect.top,
         i = 0, r;
 
-        var arrayLength = tiles.length;
         for (var i = 0; i < tiles.length; i++) {
           if(tiles[i].mouseOverMe(x,y)){
             tiles[i].hide();
