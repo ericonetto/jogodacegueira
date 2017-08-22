@@ -36,7 +36,11 @@ function nextNum(minNum,maxNum){
 $( document ).ready(function() {
   var canvasLayer2 = document.getElementById('layer2');
   var contextLayer2 = canvasLayer2.getContext('2d');
-  var audio = new Audio('./sound/piu.mp3');
+
+  function startPlayback() {
+    return document.querySelector('#music').play();
+  }
+
 
   loadLayer1();
 
@@ -71,7 +75,12 @@ $( document ).ready(function() {
           for(coluna=0;coluna<colunas;coluna++){
 
             if(tiles[coluna][linha].mouseOverMe(x,y) && tiles[coluna][linha].hidden==false){
-              audio.play();
+
+              startPlayback().then(function() {
+              }).catch(function(error) {
+                console.log(error);
+              });
+
               tiles[coluna][linha].hide();
             }
             posicaoC=posicaoC+larguraColuna;
