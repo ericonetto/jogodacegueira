@@ -42,6 +42,8 @@ $( document ).ready(function() {
   }
 
 
+  var birdTiles=birdMatrix();
+
   loadLayer1();
 
 
@@ -76,10 +78,13 @@ $( document ).ready(function() {
 
             if(tiles[coluna][linha].mouseOverMe(x,y) && tiles[coluna][linha].hidden==false){
 
-              startPlayback().then(function() {
-              }).catch(function(error) {
-                console.log(error);
-              });
+              if(birdTiles.indexOf( coluna + "," + linha)>-1){
+                startPlayback().then(function() {
+                }).catch(function(error) {
+                  console.log(error);
+                });
+              }
+
 
               tiles[coluna][linha].hide();
             }
